@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import MyUl from '../reusable/MyUl';
+import MyTable from '../reusable/MyTable';
 
-const EmployeeForm = () => {
+const EmployeeForm = (props) => {
 
     const [employeeObj, setEmployeeObj ] = useState({name: 'Chetan', mobile: '',email:'',address: ''}); 
     
@@ -17,13 +19,33 @@ const EmployeeForm = () => {
     }
 
     
-
+    const stateList = ['Maharashtra','Punjab','Goa'];
+    const cityList = ['Pune','Mumbai','Panji','Thane'];
+    const tableColumns = [
+        {header:'Name', field:'name' },
+        {header:'Mobile', field:'mobile' },
+        {header:'Email', field:'email' },
+        {header:'Address', field:'address' }
+    ]
+    const checkValidationByKey = (key) => {
+       return employeeObj[key] == ''? true: false;
+    }
     return (
         <div className='container'>
+            {/* <h3>{props.pageTitle}</h3>
+            <p>{props.pageSubTitle}</p>
+            <MyUl list={stateList}></MyUl>
+            <br/>
+            <MyUl list={cityList}></MyUl> */}
             <div className='row'>
                 <div className='col-4'>
                     <label>Enter Name</label>
                     <input type='text' onChange={(e)=>{changeEmployeeObj(e,'name')}} value={employeeObj.name} className='form-control' />
+                  {
+                    checkValidationByKey('name') &&<div className='text-danger'>
+                    This is Required
+                </div>
+                  }  
                 </div>
             </div>
             <div className='row'>
@@ -49,7 +71,8 @@ const EmployeeForm = () => {
             </div>
             <div className='row pt-3'>
                 <div className='col-6'>
-                     <table className='table table-bordered'>
+                    <MyTable columnArray={tableColumns} dataArray={employeeArray}> </MyTable>
+                     {/* <table className='table table-bordered'>
                         <thead>
                             <tr>
                                 <th>Sr No</th>
@@ -70,8 +93,8 @@ const EmployeeForm = () => {
                                     )
                                 })
                             }
-                        </tbody>
-                     </table>
+                        </tbody> 
+                     </table>*/}
                 </div>
             </div>
         

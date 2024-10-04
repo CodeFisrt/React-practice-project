@@ -2,6 +2,7 @@ import React from 'react';
 import Events from './Topics/Events';
 import UseState from './Topics/UseState';
 import EmployeeForm from './Topics/EmployeeForm';
+import Validation from './Topics/Validation';
 
 const Body = () => {
     return (
@@ -9,7 +10,8 @@ const Body = () => {
             <article>
                  {/* <Events/> */}
                  {/* <UseState/> */}
-                 <EmployeeForm/>
+                 {/* <EmployeeForm  pageTitle="Welcome To Props Session" pageSubTitle="Detail Examples"/> */}
+                 <Validation/>
             </article>
         </div>
     );
